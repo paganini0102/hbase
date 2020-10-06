@@ -203,6 +203,7 @@ public class ConnectionFactory {
       user = provider.getCurrent();
     }
 
+    // 获取hbase.client.connection.impl的配置类，如果加载不到ConnectionImplementation
     String className = conf.get(ClusterConnection.HBASE_CLIENT_CONNECTION_IMPL,
       ConnectionImplementation.class.getName());
     Class<?> clazz;
@@ -213,6 +214,11 @@ public class ConnectionFactory {
     }
     try {
       // Default HCM#HCI is not accessible; make it so before invoking.
+      /**
+       *  主要的工作就是创建与zk的连接（一会需要去Zk中查询master和meta信息）
+       *  线程池（以第一种方式为例，这里还是null）
+       *  用户信息；集群信息等
+       */
       Constructor<?> constructor = clazz.getDeclaredConstructor(Configuration.class,
         ExecutorService.class, User.class);
       constructor.setAccessible(true);
