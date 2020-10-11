@@ -40,6 +40,7 @@ import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.hadoop.hbase.shaded.com.google.common.base.Preconditions;
 
 /**
+ * 单列值过滤器
  * This filter is used to filter cells based on value. It takes a {@link CompareFilter.CompareOp}
  * operator (equal, greater, not equal, etc), and either a byte [] value or
  * a ByteArrayComparable.

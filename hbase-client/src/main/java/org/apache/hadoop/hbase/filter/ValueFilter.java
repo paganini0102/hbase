@@ -31,6 +31,7 @@ import org.apache.hadoop.hbase.shaded.protobuf.generated.FilterProtos;
 import org.apache.hadoop.hbase.shaded.com.google.protobuf.InvalidProtocolBufferException;
 
 /**
+ * 值过滤器
  * This filter is used to filter based on column value. It takes an
  * operator (equal, greater, not equal, etc) and a byte [] comparator for the
  * cell value.
