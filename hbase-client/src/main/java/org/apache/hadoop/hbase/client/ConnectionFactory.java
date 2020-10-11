@@ -106,6 +106,7 @@ public class ConnectionFactory {
    *   connection.close();
    * }
    * </pre>
+   * 方法创建连接，在调用getTable时自动创建连接池
    *
    * @param conf configuration
    * @return Connection object for <code>conf</code>
@@ -133,6 +134,7 @@ public class ConnectionFactory {
    *   connection.close();
    * }
    * </pre>
+   * 方法创建连接，根据用户传入的pool创建连接池
    *
    * @param conf configuration
    * @param pool the thread pool to use for batch operations
@@ -217,7 +219,7 @@ public class ConnectionFactory {
       /**
        *  主要的工作就是创建与zk的连接（一会需要去Zk中查询master和meta信息）
        *  线程池（以第一种方式为例，这里还是null）
-       *  用户信息；集群信息等
+       *  用户信息；集群信息
        */
       Constructor<?> constructor = clazz.getDeclaredConstructor(Configuration.class,
         ExecutorService.class, User.class);

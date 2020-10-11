@@ -272,6 +272,8 @@ public class Put extends Mutation implements HeapSize, Comparable<Row> {
 
 
   /**
+   * 为即将存储的数据添加列数据
+   *
    * Add the specified column and value, with the specified timestamp as
    * its version to this Put operation.
    * @param family family name
@@ -291,6 +293,8 @@ public class Put extends Mutation implements HeapSize, Comparable<Row> {
   }
 
   /**
+   * 添加不可变数据
+   *
    * See {@link #addColumn(byte[], ByteBuffer, long, ByteBuffer)}. This version expects
    * that the underlying arrays won't change. It's intended
    * for usage internal HBase to and for advanced client applications.
@@ -306,6 +310,8 @@ public class Put extends Mutation implements HeapSize, Comparable<Row> {
   }
 
   /**
+   * 添加一个单元格
+   *
    * Add the specified KeyValue to this Put operation.  Operation assumes that
    * the passed KeyValue is immutable and its backing array will not be modified
    * for the duration of this Put.
@@ -331,31 +337,69 @@ public class Put extends Mutation implements HeapSize, Comparable<Row> {
     return this;
   }
 
+  /**
+   * 设置本次操作的属性
+   *
+   * @param name
+   * @param value
+   * @return
+   */
   @Override
   public Put setAttribute(String name, byte[] value) {
     return (Put) super.setAttribute(name, value);
   }
 
+  /**
+   * 给这次插入操作设置一个id，这个id会被写入到日志中
+   *
+   * @param id
+   * @return
+   */
   @Override
   public Put setId(String id) {
     return (Put) super.setId(id);
   }
 
+  /**
+   * 设置写预写日志（WAL）的级别，因为HBase中的数据是先写到内存在写到硬盘中的，
+   * 如果还未写入日志的时候服务器宕机导致数据丢失，需要用到预写日志
+   *
+   * @param d
+   * @return
+   */
   @Override
   public Put setDurability(Durability d) {
     return (Put) super.setDurability(d);
   }
 
+  /**
+   * 通过addColumn添加的数据是以FamilyCellMap的形式存储在Put实例中
+   *
+   * @param map
+   * @return
+   */
   @Override
   public Put setFamilyCellMap(NavigableMap<byte[], List<Cell>> map) {
     return (Put) super.setFamilyCellMap(map);
   }
 
+  /**
+   * 定义要写入的集群id
+   *
+   * @param clusterIds of the clusters that have consumed the mutation
+   * @return
+   */
   @Override
   public Put setClusterIds(List<UUID> clusterIds) {
     return (Put) super.setClusterIds(clusterIds);
   }
 
+  /**
+   * 设置单元格的可见度
+   *
+   * @param expression
+   * @return
+   */
   @Override
   public Put setCellVisibility(CellVisibility expression) {
     return (Put) super.setCellVisibility(expression);
@@ -366,6 +410,12 @@ public class Put extends Mutation implements HeapSize, Comparable<Row> {
     return (Put) super.setACL(user, perms);
   }
 
+  /**
+   * 权限控制列表
+   *
+   * @param perms A map of permissions for a user or users
+   * @return
+   */
   @Override
   public Put setACL(Map<String, Permission> perms) {
     return (Put) super.setACL(perms);

@@ -536,6 +536,8 @@ public abstract class Mutation extends OperationWithAttributes implements Row, C
   }
 
   /**
+   * 插入数据之前先检查数据是否存在
+   *
    * A convenience method to determine if this object's familyMap contains
    * a value assigned to the given family &amp; qualifier.
    * Both given arguments must match the KeyValue object to return true.

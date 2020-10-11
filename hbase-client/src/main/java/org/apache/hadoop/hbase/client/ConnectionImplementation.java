@@ -188,7 +188,7 @@ class ConnectionImplementation implements ClusterConnection, Closeable {
 
   // Client rpc instance.
   private final RpcClient rpcClient;
-
+  // 在调用HBase API时，客户端会先在MetaCache中找到业务rowkey所在的Region
   private final MetaCache metaCache;
   private final MetricsConnection metrics;
 
