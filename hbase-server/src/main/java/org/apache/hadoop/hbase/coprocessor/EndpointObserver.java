@@ -30,6 +30,7 @@ import com.google.protobuf.Message;
 import com.google.protobuf.Service;
 
 /**
+ * 可以监听EndPoint的执行过程
  * Coprocessors implement this interface to observe and mediate endpoint invocations
  * on a region.
  * <br><br>

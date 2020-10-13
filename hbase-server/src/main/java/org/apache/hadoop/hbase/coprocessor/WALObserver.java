@@ -30,6 +30,7 @@ import org.apache.yetus.audience.InterfaceAudience;
 import org.apache.yetus.audience.InterfaceStability;
 
 /**
+ * 针对WAL的观察者，可以监听WAL的所有读写操作
  * It's provided to have a way for coprocessors to observe, rewrite,
  * or skip WALEdits as they are being written to the WAL.
  *

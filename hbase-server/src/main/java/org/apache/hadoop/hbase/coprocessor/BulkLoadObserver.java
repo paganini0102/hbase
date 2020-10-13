@@ -30,6 +30,8 @@ import org.apache.hadoop.hbase.shaded.protobuf.generated.ClientProtos.PrepareBul
 import org.apache.hadoop.hbase.shaded.protobuf.generated.ClientProtos.CleanupBulkLoadRequest;
 
 /**
+ * BulkLoad是采用MapReduce将大量数据快速的导入HBase的一种方式
+ * BulkLoadObserver可以监听BulkLoad行为
  * Coprocessors implement this interface to observe and mediate bulk load operations.
  * <br><br>
  *

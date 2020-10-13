@@ -66,6 +66,7 @@ import org.apache.yetus.audience.InterfaceAudience;
 import org.apache.yetus.audience.InterfaceStability;
 
 /**
+ * 针对Region的观察者，可以监听关于Region的操作
  * Coprocessors implement this interface to observe and mediate client actions on the region.
  * <p>
  * Since most implementations will be interested in only a subset of hooks, this class uses

@@ -27,6 +27,7 @@ import org.apache.yetus.audience.InterfaceAudience;
 import org.apache.yetus.audience.InterfaceStability;
 
 /**
+ * 针对RegionServer的观察者，可以监听整个RegionServer的操作
  * Defines coprocessor hooks for interacting with operations on the
  * {@link org.apache.hadoop.hbase.regionserver.HRegionServer} process.
  *
