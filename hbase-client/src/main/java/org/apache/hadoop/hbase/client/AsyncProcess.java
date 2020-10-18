@@ -278,6 +278,7 @@ class AsyncProcess {
             throw new IllegalArgumentException("#" + id + ", row cannot be null");
           }
           // Make sure we get 0-s replica.
+          // 在hbase:meta中根据rowkey找到它们归属的RegionServer
           RegionLocations locs = connection.locateRegion(
               tableName, r.getRow(), true, true, RegionReplicaUtil.DEFAULT_REPLICA_ID);
           if (locs == null || locs.isEmpty() || locs.getDefaultRegionLocation() == null) {
